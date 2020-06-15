@@ -1,6 +1,71 @@
+/* 공통 속성 */
+html {
+    font-size: 10px;
+}
+
+body {
+    min-width: 1060px; /* 최소길이, 지정된 값 이하로는 화면이 줄어들지 않는다. */
+    font-size: 1.8rem;
+    line-height: 1.6; /* 줄간격 */
+    font-family: Roboto, Avenir, sans-serif;
+}
+
+a {
+    text-decoration: none; /* a링크의 밑줄 제거 */
+}
+
 /* HEADER */
 .header {
-    background-color: yellow;
+    background-color: #0C4B33;
+    height: 55px; /* 강의에서는 72px, 화면 크기 문제인듯, 내컴에서 72하면 아래 여백이 넓음 */
+    padding: 15px 0 4px;
+}
+
+.container { /* 헤더에 적용 */
+    max-width: 1400px; /* 최대길이, 지정된 값 이상으로는 화면이 늘어나지 않는다. */
+    background-color: red;
+    margin: 0 auto; /* 좌, 우 에만 auto값을 주면 가운데 정렬이 된다 */
+    padding: 0 20px; /* 내용에(여기서는 글자) 좌,우에 여백을 준다 */
+    position: relative; /* ? */
+}
+
+/* position: absolute값을 주려면 position: absolute값이 어디를 기준으로 absolute 될것인지를 생각해봐야 할텐데 이경우 position: absolute값을 가진 자식속성이 기준으로 하는
+부모 영역이 position: 스택틱 값이 아닌 가장 가까운 부모영역이여서 container 영역에 position: relative 값을 준다. */
+.logo {
+    margin: 0;
+    padding-left: inherit; /* 부모요소에 padding값을 잘 적용시키기 위해 */
+    position: absolute;
+    top: 0; /* 가장 최상단 촤측에 붙을수 있도록 top와 left 지정 */
+    left: 0;
+}
+
+.nav {
+    text-align: right; /* 전체 li들이 우측 정렬 */
+}
+
+.list {
+    margin: 0;
+    font-size: 0;
+    /* ul요소의 글자 크기를 0으로 해서 li요소간의 여백을 지움 */
+}
+
+.list-item {
+    display: inline-block; /* 각각의 속성이 줄바꿈되지 않고 일렬로 정렬되게 한다. */
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+/* .list-item a {} 이렇게 사용하면 .list-item 아래의 모든a요소들 을 선택
+   .list-item > a {} 이렇게 사용하면 .list-item 바로 아래의 a요소들을 선택 */
+.list-item > a {
+    color: white;
+    display: block; /* padding값을 적용하기 위함 */
+    padding: 10px; /* a태그 간의 간격 */
+}
+
+.list-item > a:hover { /* hover이라는 가상클래스를 사용해서 a태그에 마우스를 올릴때마다 글자색을 잠깐 변하게 해줌 */
+    color: #c9f0dd;
 }
 
 /* MAIN */
@@ -9,11 +74,11 @@
 }
 
 .hero-section {
-    background-color: aqua;
+    background-color: skyblue;
 }
 
 .main-content {
-    background-color: blue;
+    background-color: pink;
     float: left;
     width: 70%;
 }
