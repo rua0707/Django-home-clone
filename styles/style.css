@@ -1,4 +1,10 @@
 /* 공통 속성 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
     font-size: 10px;
 }
@@ -14,19 +20,26 @@ a {
     text-decoration: none; /* a링크의 밑줄 제거 */
 }
 
-/* HEADER */
+/* ******************** HEADER ******************** */
 .header {
     background-color: #0C4B33;
-    height: 55px; /* 강의에서는 72px, 화면 크기 문제인듯, 내컴에서 72하면 아래 여백이 넓음 */
+    height: 72px; /* 강의에서는 72px, 화면 크기 문제인듯, 내컴에서 72하면 아래 여백이 넓음 */
     padding: 15px 0 4px;
 }
 
-.container { /* 헤더에 적용 */
+.container, /* 헤더,메인 적용 */
+.container-float { /* 메인에 메인콘텐츠, 사이드콘텐츠 적용 */
     max-width: 1400px; /* 최대길이, 지정된 값 이상으로는 화면이 늘어나지 않는다. */
-    background-color: red;
+    /* background-color: red; */
     margin: 0 auto; /* 좌, 우 에만 auto값을 주면 가운데 정렬이 된다 */
     padding: 0 20px; /* 내용에(여기서는 글자) 좌,우에 여백을 준다 */
     position: relative; /* ? */
+}
+
+.container-float::after {
+    display: block;
+    content: '';
+    clear: both;
 }
 
 /* position: absolute값을 주려면 position: absolute값이 어디를 기준으로 absolute 될것인지를 생각해봐야 할텐데 이경우 position: absolute값을 가진 자식속성이 기준으로 하는
@@ -68,28 +81,145 @@ a {
     color: #c9f0dd;
 }
 
-/* MAIN */
-.main {
-    background-color: lime;
-}
-
+/* ******************** MAIN ******************** */
+/* HERO-SECTION */
 .hero-section {
-    background-color: skyblue;
+    text-align: center; /* 글자 중간 위치 */
+    padding: 50px 0;
+    border-bottom: 1px solid #cfe3dc;
 }
 
+.intro-desc {
+    margin: 40px auto 50px;
+    width: 700px;
+    font-weight: 300;
+    font-size: 3.6rem;
+    line-height: 1.3;
+}
+
+.cta {
+    color: white;
+    width: 300px;
+    font-weight: 400;
+    margin: 0 auto 60px;
+    display: block;
+    padding: 20px 50px;
+    border-radius: 8px;
+    background: #44b78b;
+}
+
+.cta:hover {
+    background: #51be95;
+}
+
+/* MAIN-CONTENT */
 .main-content {
-    background-color: pink;
     float: left;
     width: 70%;
+    padding-right: 20px;
+}
+.main-title {
+    font-weight: 400;
+    margin: 40px 0 20px 0;
+    font-size: 3.2rem;
+    letter-spacing: -1px;
 }
 
+.main-desc {
+    margin: 0 0 20px 0;
+}
+
+.mailing-layout {
+    padding-top: 20px;
+}
+
+.mailing-layout::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.mailing {
+    float: left;
+    width: 48%;
+}
+
+.mailing:first-child {
+    margin-right: 4%;
+}
+
+.mailing-title {
+    margin: 0 0 20px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.mailing-title > a,
+.mailing-desc > a {
+    color: #20aa76;
+}
+
+.mailing-title > a:hover,
+.mailing-desc > a:hover {
+    color: #25c488;
+}
+
+.mailing-desc {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+.mailing-form {
+    margin: 10px 0 30px;
+    position: relative;
+}
+
+.mailing-form > label {
+    /* 접근성 고려 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    /* overflow: hidden은 크기를 넘은건 hidden으로 감춤 */
+    overflow: hidden;
+    /* margin: -1 은 폼영역 밖으로 넘어감 */
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+
+    /* display: none; */
+    /* visibility: hidden; 위에꺼랑 같은 내용 */
+}
+
+input[type="email"] {
+    width: 100%;
+    border: 1px solid #cfe3dc;
+    border-radius: 4px;
+    height: 5rem;
+    padding: 6px 80px 8px 10px;
+}
+
+.mailing-form-btn {
+    position: absolute;
+    top: 30%;
+    right: 1rem;
+    border: 0;
+    background: transparent;
+    color: #44b78b;
+    cursor: pointer;
+}
+
+.mailing-form-btn:hover {
+    color: #0c4b33;
+  }
+
+/* SIDE-CONTENT */
 .side-content {
     background-color: yellow;
     float: right;
     width: 30%;
 }
 
-/* CONTENT-INFO */
+/* ******************** CONTENT-INFO ******************** */
 .content-info {
     background-color: green;
 }
@@ -99,5 +229,6 @@ a {
 }
 
 .footer {
-    background-color: purple;
+    background-color: green;
+    clear: both; /* ? */
 }
